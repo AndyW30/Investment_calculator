@@ -1,8 +1,13 @@
-import './App.css';
+import GlobalStyle from './globalStyles.js';
 import Header from './components/Header';
 import UserInput from './components/UserInput';
 import Results from './components/Results';
 import { useState } from 'react';
+import { styled } from 'styled-components';
+
+const StyledP = styled.p`
+  text-align: center;
+`;
 
 function App() {
   const [userInput, setUserInput] = useState({
@@ -23,10 +28,13 @@ function App() {
 
   return (
     <>
+      <GlobalStyle />
       <Header />
       <UserInput userInput={userInput} onChangeInput={handleInput} />
-      {!validData && <p className='center'>Please enter the duration greater than 0.</p>}
-      {validData &&<Results input={userInput} />}
+      {!validData && (
+        <StyledP>Please enter the duration greater than 0.</StyledP>
+      )}
+      {validData && <Results input={userInput} />}
     </>
   );
 }

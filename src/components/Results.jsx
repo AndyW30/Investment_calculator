@@ -1,4 +1,24 @@
+import { styled } from 'styled-components';
 import { calculateInvestmentResults, formatter } from '../util/investment';
+
+const StyledTable = styled.table`
+  max-width: 50rem;
+  margin: 2rem auto;
+  padding: 1rem;
+  table-layout: fixed;
+  border-spacing: 1rem;
+  text-align: right;
+  thead {
+    font-size: 0.7rem;
+    color: #83e6c0;
+  }
+  tbody {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 0.85rem;
+    color: #c2e9e0;
+  }
+`;
+
 export default function Results({ input }) {
   const resultsData = calculateInvestmentResults(input);
   const initialInvestment =
@@ -9,7 +29,7 @@ export default function Results({ input }) {
       : 0;
   console.log(resultsData);
   return (
-    <table id="result">
+    <StyledTable>
       <thead>
         <tr>
           <th>Year</th>
@@ -37,6 +57,6 @@ export default function Results({ input }) {
           );
         })}
       </tbody>
-    </table>
+    </StyledTable>
   );
 }
